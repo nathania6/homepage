@@ -1,0 +1,595 @@
+<!doctype html>
+
+<html class="light" lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>StudentPro | Nia's Portfolio</title>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#191c1e",
+              "surface-container-low": "#f2f4f6",
+              "inverse-primary": "#81cfff",
+              "on-primary-container": "#004764",
+              "primary-fixed": "#c6e7ff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed": "#001e2d",
+              "tertiary-fixed": "#ffdcc4",
+              "on-tertiary-container": "#673400",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#ff932d",
+              "surface-tint": "#00658d",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#81cfff",
+              "on-primary-fixed-variant": "#004c6b",
+              "inverse-on-surface": "#eff1f3",
+              "on-tertiary-fixed-variant": "#6f3900",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed": "#2f1500",
+              surface: "#f7f9fb",
+              "secondary-fixed-dim": "#ecc200",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#3d4850",
+              "inverse-surface": "#2d3133",
+              secondary: "#725c00",
+              "on-surface": "#191c1e",
+              tertiary: "#914c00",
+              "surface-variant": "#e0e3e5",
+              primary: "#00658d",
+              "error-container": "#ffdad6",
+              "primary-container": "#00baff",
+              "secondary-fixed": "#ffe07c",
+              "on-secondary-fixed": "#231b00",
+              outline: "#6d7881",
+              background: "#f7f9fb",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-container": "#fdd000",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e6e8ea",
+              "tertiary-fixed-dim": "#ffb77f",
+              "surface-container": "#eceef0",
+              error: "#ba1a1a",
+              "outline-variant": "#bdc8d2",
+              "on-secondary-container": "#6e5900",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed-variant": "#564500",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-desktop": "48px",
+              "max-width": "1200px",
+              "margin-mobile": "16px",
+              gutter: "24px",
+              base: "8px",
+            },
+            fontFamily: {
+              "body-md": ["Be Vietnam Pro"],
+              "label-bold": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "body-lg": ["Be Vietnam Pro"],
+              "headline-lg-mobile": ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+            },
+            fontSize: {
+              "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+              "label-bold": ["14px", { lineHeight: "1.2", fontWeight: "700" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "700" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg-mobile": [
+                "30px",
+                { lineHeight: "1.2", fontWeight: "800" },
+              ],
+              "headline-lg": [
+                "40px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "800",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #f7f9fb;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .active-student-ring {
+        border: 4px solid #fdd000;
+      }
+      .soft-card-shadow {
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+      }
+      .hover-lift:hover {
+        transform: translateY(-4px) scale(1.02);
+        transition: all 0.3s ease;
+      }
+
+      /* Floating animations */
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+      .delay-1 {
+        animation-delay: 1s;
+      }
+      .delay-2 {
+        animation-delay: 2s;
+      }
+    </style>
+  </head>
+  <body class="font-body-md text-on-surface">
+    <!-- TopAppBar -->
+    <header
+      class="w-full sticky top-0 z-50 bg-surface dark:bg-on-background shadow-sm"
+    >
+      <nav
+        class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-max-width mx-auto"
+      >
+        <div
+          class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary"
+        >
+          StudentPro
+        </div>
+        <div class="hidden md:flex gap-8 items-center">
+          <a
+            class="font-label-bold text-label-bold text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="#hero"
+            >Profile</a
+          >
+          <a
+            class="font-label-bold text-label-bold text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="font-label-bold text-label-bold text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="#milestones"
+            >Milestones</a
+          >
+          <a
+            class="font-label-bold text-label-bold text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors"
+            href="#gallery"
+            >Gallery</a
+          >
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="material-symbols-outlined text-on-surface-variant">
+            notifications
+          </button>
+          <button class="material-symbols-outlined text-on-surface-variant">
+            settings
+          </button>
+          <div
+            class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container"
+          >
+            <img
+              class="w-full h-full object-cover"
+              data-alt="A friendly 6th grade student portrait with a warm smile, wearing a casual school polo shirt. The lighting is bright and natural, set against a blurred educational background with soft primary colors. The overall mood is optimistic, professional yet youthful, following a clean modern minimalism style."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHnrtK3IDG6mWNdH-vwiEXosOQyF-ay_4ZIHgwEf8Sb_e4nZ5IqDaqn6rQDNHRu3aTseZ9crl93jy2yfMu0dvx3xMZAor3TPZNYPys-Z76oez4Fu6F4nG2sft5Rf6QBaUqINx-jVFmxvUfurLcaW0o_nfr8fsUKYWsuV4LaBp6frxdRMXXb7hIVSBGpLXYdjPVrpi3_qs4NRhcxOD9T3GLvkN6IiKREjPonhuAxjnCzeRKbDq9L1azvw"
+            />
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop space-y-24 py-12"
+    >
+      <!-- Hero Section -->
+      <section
+        class="relative overflow-hidden flex flex-col md:flex-row items-center gap-12 py-12"
+        id="hero"
+      >
+        <!-- Decorative Elements -->
+        <div
+          class="absolute top-0 left-0 -z-10 text-primary-container/20 animate-float"
+        >
+          <span
+            class="material-symbols-outlined text-8xl"
+            style="font-variation-settings: &quot;opsz&quot; 48"
+            >edit</span
+          >
+        </div>
+        <div
+          class="absolute bottom-10 right-10 -z-10 text-tertiary-container/30 animate-float delay-1"
+        >
+          <span class="material-symbols-outlined text-9xl">send</span>
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <h1
+            class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4 text-on-background"
+          >
+            Halo, <span class="text-primary">Aku Nia!</span> 👋
+          </h1>
+          <p
+            class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-8"
+          >
+            Aku adalah siswa kelas 6 SD yang penuh semangat. Aku suka belajar
+            hal baru, bereksperimen di laboratorium, dan bermain sepak bola
+            bersama teman-teman!
+          </p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <button
+              class="px-8 py-4 bg-primary text-on-primary font-label-bold text-label-bold rounded-full soft-card-shadow hover:scale-105 transition-transform"
+            >
+              Kenali Aku Lebih Dekat
+            </button>
+            <button
+              class="px-8 py-4 bg-surface-container-high text-primary font-label-bold text-label-bold rounded-full hover:bg-surface-container-highest transition-colors"
+            >
+              Unduh Portfolio
+            </button>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden active-student-ring soft-card-shadow relative z-10"
+          >
+            <img
+              class="w-full h-full object-cover"
+              data-alt="A vibrant, high-quality portrait of a cheerful 6th-grade boy named Andi, showcasing an energetic and confident posture. He has a bright smile and is positioned in a modern, brightly lit study space with minimal colorful accents. The photographic style is clean and crisp, with soft ambient lighting that highlights his enthusiastic personality."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC12FsO0e6hbUCDFgkD1KMw6pg8wKHIshwA1XcwZRa7aPlIeY5NSHim2u2tkFb8AknvtWc95vv8drGTPkAmpdWJtDVIvPnB5XnqOtKSzA0mDSg2iyF77KU58hU16wxNuYND37k_M93AddTUE22BMlTK3zw1Pvp5XZVYqjzwDkfR0zUJcLldKDJL6nuVXksSC91l5mdD14xbsP6mkthTjQMXmwRzweF8tt_FP4im_gaxGmW_KTtnk05xaQ"
+            />
+          </div>
+          <!-- Accent Shapes -->
+          <div
+            class="absolute -top-4 -right-4 w-24 h-24 bg-tertiary-container rounded-full -z-0 opacity-40 blur-xl"
+          ></div>
+          <div
+            class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-container rounded-full -z-0 opacity-40 blur-xl"
+          ></div>
+        </div>
+      </section>
+      <!-- About Me / Colorful Cards -->
+      <section class="space-y-8" id="about">
+        <div class="text-center">
+          <h2 class="font-headline-md text-headline-md text-on-background mb-2">
+            Tentang Aku
+          </h2>
+          <div class="w-16 h-1 bg-secondary mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <!-- Card 1: Hobi -->
+          <div
+            class="bg-white border border-outline-variant p-8 rounded-xl soft-card-shadow border-t-4 border-t-primary hover-lift"
+          >
+            <div
+              class="w-12 h-12 bg-primary-fixed text-on-primary-fixed flex items-center justify-center rounded-lg mb-6"
+            >
+              <span class="material-symbols-outlined">sports_soccer</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-4">Hobi</h3>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-2 text-on-surface-variant">
+                <span class="material-symbols-outlined text-primary text-sm"
+                  >check_circle</span
+                >
+                Bermain Sepak Bola
+              </li>
+              <li class="flex items-center gap-2 text-on-surface-variant">
+                <span class="material-symbols-outlined text-primary text-sm"
+                  >check_circle</span
+                >
+                Menggambar Komik
+              </li>
+            </ul>
+          </div>
+          <!-- Card 2: Cita-cita -->
+          <div
+            class="bg-white border border-outline-variant p-8 rounded-xl soft-card-shadow border-t-4 border-t-secondary hover-lift"
+          >
+            <div
+              class="w-12 h-12 bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center rounded-lg mb-6"
+            >
+              <span class="material-symbols-outlined">rocket_launch</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-4">Cita-cita</h3>
+            <p class="text-on-surface-variant mb-4">
+              Aku ingin menjadi seorang
+              <span class="font-bold text-secondary">Astronot</span> untuk
+              menjelajahi bintang-bintang di luar angkasa!
+            </p>
+            <div class="w-full bg-surface-container rounded-full h-3">
+              <div
+                class="bg-secondary h-3 rounded-full"
+                style="width: 75%"
+              ></div>
+            </div>
+            <span class="text-xs font-label-bold mt-2 inline-block"
+              >Persiapan: 75% Done!</span
+            >
+          </div>
+          <!-- Card 3: Pelajaran -->
+          <div
+            class="bg-white border border-outline-variant p-8 rounded-xl soft-card-shadow border-t-4 border-t-tertiary hover-lift"
+          >
+            <div
+              class="w-12 h-12 bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center rounded-lg mb-6"
+            >
+              <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-4">
+              Pelajaran Favorit
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-4 py-1 bg-tertiary/10 text-tertiary rounded-full font-label-bold"
+                >IPA</span
+              >
+              <span
+                class="px-4 py-1 bg-tertiary/10 text-tertiary rounded-full font-label-bold"
+                >Kesenian</span
+              >
+              <span
+                class="px-4 py-1 bg-tertiary/10 text-tertiary rounded-full font-label-bold"
+                >Matematika</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Milestones Section -->
+      <section
+        class="bg-surface-container-low rounded-3xl p-8 md:p-12"
+        id="milestones"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"
+        >
+          <div>
+            <h2 class="font-headline-md text-headline-md text-on-background">
+              Pencapaian Hebat
+            </h2>
+            <p class="text-on-surface-variant">
+              Beberapa hal yang berhasil aku capai tahun ini!
+            </p>
+          </div>
+          <span
+            class="material-symbols-outlined text-primary text-5xl opacity-20"
+            >military_tech</span
+          >
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+          <div
+            class="flex items-center gap-6 bg-white p-6 rounded-xl soft-card-shadow"
+          >
+            <div
+              class="w-16 h-16 shrink-0 bg-secondary-container rounded-full flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-on-secondary-container text-3xl"
+                >workspace_premium</span
+              >
+            </div>
+            <div>
+              <h4 class="font-label-bold text-lg text-on-background">
+                Juara 1 Lomba Menggambar
+              </h4>
+              <p class="text-on-surface-variant text-sm">
+                Tingkat Sekolah Dasar - Januari 2024
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-6 bg-white p-6 rounded-xl soft-card-shadow"
+          >
+            <div
+              class="w-16 h-16 shrink-0 bg-primary-container rounded-full flex items-center justify-center"
+            >
+              <span
+                class="material-symbols-outlined text-on-primary-container text-3xl"
+                >groups</span
+              >
+            </div>
+            <div>
+              <h4 class="font-label-bold text-lg text-on-background">
+                Ketua Kelas yang Baik
+              </h4>
+              <p class="text-on-surface-variant text-sm">
+                Terpilih oleh teman-teman sekelas
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Gallery Section - Bento Style -->
+      <section class="space-y-8" id="gallery">
+        <div class="text-center">
+          <h2 class="font-headline-md text-headline-md text-on-background">
+            Keseruan di Sekolah
+          </h2>
+          <p class="text-on-surface-variant">
+            Intip momen-momen seruku bersama guru dan teman-teman.
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]"
+        >
+          <div
+            class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl"
+          >
+            <img
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="A vivid action shot of a group of diverse 6th grade students performing a science experiment with a colorful chemical reaction in a modern school lab. The lighting is bright and directional, emphasizing the excitement on their faces. The aesthetic is clean, educational, and high-energy with soft shadows."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhHaeqSKzB05ST08A8Tu2vzfqYWHQTnxDAVKw1tE-iUpeGGUr9NV0FiPrEJ9yLsCWeYpjjUtE78kgkNO_uJJeYiVFvWLHUaX3dxz8O7FcyCSg8Vu39cIZ9rvBQw4JjUCwZP69elsMRXVNBhzYGEwyUnKHKNXJ-4MNg4PUPPnbrWSDnZxlTtSph6uICGKT1D2P1QVL4HyAP33z0a_cNtzWFYrJbUcPeI9DbHERDD0_JRnnz-9t1a1uE9w"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+            >
+              <span class="text-white font-label-bold"
+                >Eksperimen IPA Seru!</span
+              >
+            </div>
+          </div>
+          <div class="md:col-span-2 relative group overflow-hidden rounded-2xl">
+            <img
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="Candid moment of young students laughing and playing together on a vibrant, green school playground during a sunny day. The scene captures pure joy and friendship, with a shallow depth of field focusing on the students' expressions. The style is bright, saturated, and optimistic."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJDiZUw5XDNV-EyIBu2u5sj1SH6u6LZMpKKb5YlHSYHUGce0r1Dex2byiq85lPCtahSEHiqcZEfyC07CosivvV-N-Cfny0Q9NZL04hL2mKT4yCwH37t_hhDZ1OpFXrYRsT-Mj5U6BIb2h1pnvY5w4j3glfCVw0U6MQ_vm5IrwlWRao2nGWRx-6pychZeT13Ed3Z3FNyhu_aUL1_5SZCCjEHryX70ZkCimSgu4illH9XB-1wUC6I1F-mQ"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6"
+            >
+              <span class="text-white font-label-bold">Main Bareng Teman</span>
+            </div>
+          </div>
+          <div class="relative group overflow-hidden rounded-2xl">
+            <img
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="Close-up of a student's hands skillfully using paintbrushes and vibrant watercolors on a large canvas in a bright art classroom. The lighting is soft and artistic, highlighting the textures of the paint. The overall atmosphere is creative and focused, following the student-pro aesthetic."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeP3EX_1wryXR0rsFx5dGqHCy1e1HwCt-rnyr4GMAFzg0FuD8-3XNbQKC_2mblwYzWf6GtahsmQoCcNgqgVw_9q9r6AfXY3UlVbDGBrO0aNCMUEmOYBciStjR7Yt8klQe0V45gthoJYTgQm8bukizgXkK6Ft-kuLxP071_p7_1y2oU_3vGCmUtfXWqfmoFrxQOsQKmrZdoPP-IZ99KvvAh0QWux8ty6KRlBIGNO-iYTP0sRLQk7E1keg"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"
+            >
+              <span class="text-white text-sm font-label-bold"
+                >Waktunya Melukis</span
+              >
+            </div>
+          </div>
+          <div class="relative group overflow-hidden rounded-2xl">
+            <img
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              data-alt="An organized and cheerful school library setting with students quietly reading books on colorful beanbags. The space is filled with natural light from large windows, creating a peaceful and encouraging learning environment. The design style is modern, minimalist, and very approachable."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmm8DLqrqeVxE8wbwI4uJ6dslbmfh6NIoob4K5CYQwpY23-OtU_s3NebYTU9LGZK75FkgSGhbWdwbGys_IDObfQTUNQzmJ4j_m4OXquPMtnUeXdvvvoY2SaagGxwhrwy0PAC3uDL4JoXBr5QcwstoVYxqA2GnRm2_pQJZwVTEIzRbzkUU_uG9758b9RKhdh3VYCJ4jPDfQJp32seq_vNEyDbfBCDR6mlliWmTamsHGJeOKEsfRe-JewQ"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"
+            >
+              <span class="text-white text-sm font-label-bold"
+                >Membaca di Perpustakaan</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA Section -->
+      <section
+        class="bg-primary py-16 px-8 rounded-3xl text-center text-on-primary relative overflow-hidden"
+      >
+        <!-- Glassmorphism Overlay -->
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -ml-32 -mb-32"
+        ></div>
+        <div class="relative z-10 space-y-6">
+          <h2 class="font-headline-lg text-headline-lg">Ayo Berteman!</h2>
+          <p class="font-body-lg text-body-lg opacity-90 max-w-md mx-auto">
+            Kamu bisa menyapaku atau bertanya tentang hobiku lewat tombol di
+            bawah ini (diawasi Guru).
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <button
+              class="px-10 py-4 bg-white text-primary font-label-bold text-label-bold rounded-full hover:bg-surface-container-low transition-all active:scale-95"
+            >
+              Say Hi via Email
+            </button>
+            <button
+              class="px-10 py-4 border-2 border-white text-white font-label-bold text-label-bold rounded-full hover:bg-white/10 transition-all"
+            >
+              Hubungi Guru
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full mt-auto bg-surface-container dark:bg-surface-dim border-t border-outline-variant dark:border-outline"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-8 gap-gutter max-w-max-width mx-auto"
+      >
+        <div
+          class="font-headline-md text-headline-md text-on-surface dark:text-on-primary-fixed"
+        >
+          StudentPro
+        </div>
+        <p class="text-on-surface-variant font-body-md text-body-md">
+          © 2024 StudentPro Academic Portfolio
+        </p>
+        <div class="flex gap-6">
+          <a
+            class="text-on-surface-variant font-label-bold text-label-bold hover:underline text-primary transition-opacity hover:opacity-80"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-on-surface-variant font-label-bold text-label-bold hover:underline text-primary transition-opacity hover:opacity-80"
+            href="#"
+            >Help Center</a
+          >
+          <a
+            class="text-on-surface-variant font-label-bold text-label-bold hover:underline text-primary transition-opacity hover:opacity-80"
+            href="#"
+            >Contact Teacher</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Micro-interactions
+      document.querySelectorAll(".hover-lift").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.classList.add("soft-card-shadow");
+        });
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
